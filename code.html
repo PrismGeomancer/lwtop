@@ -1,0 +1,726 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head><meta charset="utf-8"/><meta content="width=device-width, initial-scale=1.0" name="viewport"/><style>@layer base { html, body { margin: 0; padding: 0; } body { overscroll-behavior: none; } main > :first-child { margin-top: 0 !important; } main > :last-child { margin-bottom: 0 !important; } } ::-webkit-scrollbar { display: none; }</style><script src="https://cdn.tailwindcss.com"></script><script id="tailwind-config">tailwind.config = { darkMode: "class", theme: { extend: { "colors": { "surface-container-low": "#1c1b1b", "on-tertiary-fixed-variant": "#004f4f", "inverse-surface": "#e5e2e1", "secondary-container": "#3239a3", "secondary": "#bfc2ff", "on-secondary": "#181d8c", "on-secondary-fixed": "#00006e", "surface-tint": "#a2c9ff", "secondary-fixed": "#e0e0ff", "tertiary-fixed": "#93f2f2", "surface-dim": "#131313", "outline-variant": "#404752", "tertiary": "#76d6d5", "surface-container-highest": "#353534", "secondary-fixed-dim": "#bfc2ff", "on-secondary-fixed-variant": "#3239a3", "background": "#131313", "on-tertiary-fixed": "#002020", "on-surface-variant": "#c0c7d4", "surface-container": "#201f1f", "surface-bright": "#3a3939", "on-primary-fixed": "#001c38", "error-container": "#93000a", "on-primary-fixed-variant": "#004881", "surface-container-lowest": "#0e0e0e", "on-tertiary": "#003737", "tertiary-fixed-dim": "#76d6d5", "outline": "#8a919e", "primary-container": "#3394f1", "surface-variant": "#353534", "tertiary-container": "#3a9f9f", "error": "#ffb4ab", "primary-fixed": "#d3e4ff", "on-tertiary-container": "#002f2f", "inverse-primary": "#0060a8", "inverse-on-surface": "#313030", "surface-container-high": "#2a2a2a", "on-secondary-container": "#a9afff", "primary": "#a2c9ff", "surface": "#131313", "on-error-container": "#ffdad6", "on-error": "#690005", "on-primary": "#00315b", "on-background": "#e5e2e1", "primary-fixed-dim": "#a2c9ff", "on-primary-container": "#002b50", "on-surface": "#e5e2e1" }, "borderRadius": { "DEFAULT": "0.25rem", "lg": "0.5rem", "xl": "0.75rem", "full": "9999px" }, "spacing": { "margin-page": "3rem", "gutter-sm": "1rem", "grid-column-count": "12", "gutter-lg": "2rem", "gutter-md": "1.5rem" }, "fontFamily": { "headline-md": ["Inter"], "headline-lg": ["Inter"], "headline-xl": ["Inter"], "headline-sm": ["Inter"], "mono-data": ["JetBrains Mono"], "body-sm": ["Inter"], "label-md": ["JetBrains Mono"], "body-lg": ["Inter"], "body-md": ["Inter"] }, "fontSize": { "headline-md": ["28px", { "lineHeight": "36px", "letterSpacing": "-0.01em", "fontWeight": "600" }], "headline-lg": ["40px", { "lineHeight": "48px", "letterSpacing": "-0.02em", "fontWeight": "600" }], "headline-xl": ["56px", { "lineHeight": "60px", "letterSpacing": "-0.03em", "fontWeight": "700" }], "headline-sm": ["20px", { "lineHeight": "28px", "fontWeight": "500" }], "mono-data": ["12px", { "lineHeight": "16px", "letterSpacing": "0.05em", "fontWeight": "400" }], "body-sm": ["13px", { "lineHeight": "18px", "fontWeight": "400" }], "label-md": ["11px", { "lineHeight": "16px", "letterSpacing": "0.08em", "fontWeight": "500" }], "body-lg": ["16px", { "lineHeight": "24px", "fontWeight": "400" }], "body-md": ["14px", { "lineHeight": "20px", "fontWeight": "400" }] } } } }</script>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@100..900&amp;family=JetBrains+Mono:wght@100..900&amp;display=swap" rel="stylesheet"/></head><body class="bg-surface font-body-md text-on-surface"><header class="fixed top-0 w-full z-50 bg-surface/80 backdrop-blur-xl shadow-[0_1px_8px_rgba(0,0,0,0.04)]"><div class="h-16 max-w-[1440px] mx-auto px-margin-page flex items-center justify-between"><div class="flex items-center gap-gutter-md"><span class="font-headline-sm tracking-widest uppercase text-on-surface">LAWTOP</span></div><nav class="hidden md:flex items-center gap-gutter-lg" data-active-classes="text-primary font-bold"><a aria-current="page" class="transition-colors text-primary font-bold" data-path="specs" href="#">Specs</a><a class="text-sm text-on-surface-variant hover:text-on-surface transition-colors" data-path="artifacts" href="#">Artifacts</a><a class="text-sm text-on-surface-variant hover:text-on-surface transition-colors" data-path="narrative" href="#">Narrative</a><a class="text-sm text-on-surface-variant hover:text-on-surface transition-colors" data-path="contract-address" href="#">Contract Address</a></nav><div class="flex items-center gap-4"><img alt="Profile" class="w-8 h-8 rounded-full object-cover" src="https://www.gstatic.com/labs-code/stitch/stitch-placeholder-300x300.svg"/></div></div></header><main class="w-full pt-16 bg-surface"><div class="flex flex-col w-full text-on-surface bg-surface font-body-md">
+<!-- HERO SECTION -->
+<section class="relative min-h-[90vh] flex flex-col items-center justify-center px-4 overflow-hidden pt-12 pb-20">
+<div class="absolute inset-0 bg-[radial-gradient(circle_at_center,rgba(51,148,241,0.08)_0,transparent_70%)] pointer-events-none"></div>
+<div class="z-10 text-center max-w-4xl mx-auto space-y-4">
+<div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-surface-container border border-outline-variant/30 text-label-sm font-mono-data text-primary uppercase tracking-widest">
+<span>SEC_TERM_v4.2</span>
+<span>•</span>
+<span>M4 MAX (Maximal Anxiety)</span>
+</div>
+<h1 class="text-5xl md:text-7xl font-headline-lg tracking-tight font-extrabold">
+        $LAWTOP
+      </h1>
+<p class="text-xl md:text-2xl text-on-surface-variant font-headline-sm italic">
+        “Computer, but worse.”
+      </p>
+</div>
+<!-- Interactive Rotatable Canvas / Laptop Showcase -->
+<div class="relative z-10 mt-12 w-full max-w-3xl mx-auto group cursor-grab active:cursor-grabbing" id="hero-laptop-container">
+<div class="absolute -inset-1 bg-gradient-to-r from-primary/20 via-tertiary/20 to-primary/20 rounded-xl blur-lg opacity-75 group-hover:opacity-100 transition duration-1000"></div>
+<div class="relative bg-surface-container-low rounded-xl p-4 shadow-2xl border border-outline-variant/20 overflow-hidden flex flex-col items-center">
+<div class="w-full flex justify-between items-center mb-3 px-2 text-mono-data text-on-surface-variant">
+<span class="flex items-center gap-1.5"><span class="w-2 h-2 rounded-full bg-tertiary animate-pulse"></span> LAWTOP OS v1.0.4</span>
+<span>DRAG TO ROTATE 360°</span>
+</div>
+<div class="relative w-full aspect-square max-w-[500px] flex items-center justify-center transition-transform duration-100" id="rotatable-laptop">
+<img alt="Lawtop" class="w-full h-full object-contain filter drop-shadow-[0_10px_20px_rgba(0,0,0,0.8)]" data-alt="Hand-drawn amateur colored-pencil and black pen drawing of a silver laptop with uneven proportions, a screen showing a messy chart, clumsy keyboard keys, and an apple logo replaced by a sketchy pear or banana." src="https://lh3.googleusercontent.com/aida-public/AB6AXuDSU8iejK7kIluBGAVZln2vqtNbYUBxpqwPNpoY5wo5_dWg6BVPRAGH5szzPGSh6mMEf_x2j4m7IBPVTXgvJn-YnvVshf2Yj6o7BTA0WQQisHnW9b1So4RkT7lqRuNDbYTrZqUHY5AL2uc3tzXbGvmSmTCqWjnXH_YOOGs0APbn1U9xItflV8DLm3Zdhjt0p8DPLs5K74KTE1KHQJm7qehsCFg2Yn9p90G9J1dOeYY0cGpTVXrmwvkcR44ag9YKUinM5A"/>
+</div>
+<div class="mt-4 flex gap-3">
+<button class="px-6 py-2 bg-primary text-on-primary font-mono-data rounded hover:bg-primary/90 transition" onclick="bootOsSequence()">BOOT OS</button>
+<a class="px-6 py-2 bg-surface-container-high text-on-surface font-mono-data rounded hover:bg-surface-bright transition" href="#hotspots">EXPLORE HARDWARE</a>
+</div>
+</div>
+</div>
+</section>
+<!-- INTERACTIVE HOTSPOTS SECTION -->
+<section class="py-24 px-4 max-w-7xl mx-auto w-full" id="hotspots">
+<div class="text-center mb-16 space-y-2">
+<span class="text-label-sm font-mono-data text-primary uppercase">Precision Engineered Chaos</span>
+<h2 class="text-3xl md:text-4xl font-headline-lg">Explore the Anatomy</h2>
+<p class="text-on-surface-variant max-w-xl mx-auto">Click the telemetry pins below to inspect internal technical specifications.</p>
+</div>
+<div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
+<div class="lg:col-span-7 relative flex justify-center bg-surface-container-lowest p-8 rounded-2xl">
+<div class="relative w-full max-w-[500px] aspect-square">
+<img class="w-full h-full object-contain" data-alt="Hand drawn laptop technical schematic view" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBVJvR5fXnCFZvGUu_exN_X_fK6VeUknRWKqmR5BexYooTlQef6E_4z1MrLEeSw6fHv9Vx64P6I2i2B4aII98bLHofQto85e9d0ZRi7_JPEXBfpwQUg8Jx3RuP1sFyfdHsA3OMgLtR4L_biluqsMK4b-cBWQ4fvvjgtt4oBwW0cDD20ZtN6OYLwpZBUlcDYdzIUmS1FhPKQQcLfwH4sniFzKJSO_e2cqLPcjMICTqJ2RLxBmh6BRZrlw-Wer4lPDkTSgg"/>
+<!-- Hotspot Pins -->
+<button class="absolute top-[25%] left-[30%] w-6 h-6 rounded-full bg-primary text-on-primary flex items-center justify-center font-mono-data text-xs animate-ping duration-1000" onclick="setHotspot('display')">1</button>
+<button class="absolute top-[25%] left-[30%] w-6 h-6 rounded-full bg-primary text-on-primary flex items-center justify-center font-mono-data text-xs shadow-lg" onclick="setHotspot('display')">1</button>
+<button class="absolute top-[50%] left-[50%] w-6 h-6 rounded-full bg-tertiary text-on-tertiary flex items-center justify-center font-mono-data text-xs shadow-lg" onclick="setHotspot('processor')">2</button>
+<button class="absolute top-[65%] left-[40%] w-6 h-6 rounded-full bg-error text-on-error flex items-center justify-center font-mono-data text-xs shadow-lg" onclick="setHotspot('gpu')">3</button>
+<button class="absolute top-[70%] left-[70%] w-6 h-6 rounded-full bg-primary text-on-primary flex items-center justify-center font-mono-data text-xs shadow-lg" onclick="setHotspot('battery')">4</button>
+<button class="absolute top-[45%] left-[30%] w-6 h-6 rounded-full bg-secondary text-on-secondary flex items-center justify-center font-mono-data text-xs shadow-lg" onclick="setHotspot('keyboard')">5</button>
+</div>
+</div>
+<div class="lg:col-span-5 space-y-6">
+<div class="bg-surface-container p-6 rounded-xl border border-outline-variant/30 transition-all duration-300" id="hotspot-card">
+<div class="flex items-center justify-between mb-4">
+<span class="px-2.5 py-1 bg-primary/20 text-primary rounded font-mono-data text-label-sm" id="hs-badge">MODULE 01</span>
+<span class="text-mono-data text-tertiary" id="hs-status">ONLINE</span>
+</div>
+<h3 class="text-2xl font-headline-md mb-2" id="hs-title">DISPLAY</h3>
+<p class="text-on-surface-variant text-body-lg mb-6" id="hs-desc">Shows things when not flickering. Resolution is technically perceived by human eyes.</p>
+<div class="grid grid-cols-2 gap-4 border-t border-outline-variant/20 pt-4 font-mono-data text-body-sm">
+<div><span class="text-on-surface-variant">Refresh Rate:</span> <span id="hs-spec1">60Hz (sometimes 45)</span></div>
+<div><span class="text-on-surface-variant">Brightness:</span> <span id="hs-spec2">Visible indoors</span></div>
+</div>
+</div>
+<div class="grid grid-cols-3 gap-3">
+<button class="p-3 bg-surface-container-low hover:bg-surface-container rounded-lg text-left font-mono-data text-xs" onclick="setHotspot('display')">01. DISPLAY</button>
+<button class="p-3 bg-surface-container-low hover:bg-surface-container rounded-lg text-left font-mono-data text-xs" onclick="setHotspot('processor')">02. PROCESSOR</button>
+<button class="p-3 bg-surface-container-low hover:bg-surface-container rounded-lg text-left font-mono-data text-xs" onclick="setHotspot('gpu')">03. GPU</button>
+<button class="p-3 bg-surface-container-low hover:bg-surface-container rounded-lg text-left font-mono-data text-xs" onclick="setHotspot('battery')">04. BATTERY</button>
+<button class="p-3 bg-surface-container-low hover:bg-surface-container rounded-lg text-left font-mono-data text-xs" onclick="setHotspot('keyboard')">05. KEYBOARD</button>
+<button class="p-3 bg-surface-container-low hover:bg-surface-container rounded-lg text-left font-mono-data text-xs" onclick="setHotspot('camera')">06. CAMERA</button>
+</div>
+</div>
+</div>
+</section>
+<!-- EXPLODED HARDWARE TEARDOWN -->
+<section class="py-24 bg-surface-container-lowest px-4">
+<div class="max-w-7xl mx-auto">
+<div class="flex flex-col md:flex-row justify-between items-start md:items-end mb-16 gap-4">
+<div>
+<span class="text-label-sm font-mono-data text-primary uppercase">Internal Architecture</span>
+<h2 class="text-3xl md:text-4xl font-headline-lg mt-1">Exploded Teardown</h2>
+</div>
+<button class="px-5 py-2.5 bg-primary text-on-primary rounded font-mono-data text-sm hover:opacity-90 transition" id="explode-btn" onclick="toggleExplode()">
+          TRIGGER EXPLOSION
+        </button>
+</div>
+<div class="relative min-h-[500px] flex flex-col items-center justify-center gap-6 transition-all duration-700" id="exploded-view-container">
+<!-- Layer 1: Screen -->
+<div class="exploded-layer transform transition-all duration-500 translate-y-0 w-full max-w-xl bg-surface-container p-4 rounded-xl flex items-center justify-between border border-outline-variant/20 shadow-lg">
+<div class="flex items-center gap-4">
+<span class="font-mono-data text-primary">01</span>
+<div><h4 class="font-headline-sm">RETINA-ISH DISPLAY</h4><p class="text-body-sm text-on-surface-variant">Glass front panel with anti-fingerprint smudges</p></div>
+</div>
+<span class="font-mono-data text-xs px-2 py-1 bg-surface-container-high rounded">1080P MAX</span>
+</div>
+<!-- Layer 2: Keyboard -->
+<div class="exploded-layer transform transition-all duration-500 translate-y-0 w-full max-w-xl bg-surface-container p-4 rounded-xl flex items-center justify-between border border-outline-variant/20 shadow-lg">
+<div class="flex items-center gap-4">
+<span class="font-mono-data text-primary">02</span>
+<div><h4 class="font-headline-sm">KEYBOARD &amp; TRACKPAD</h4><p class="text-body-sm text-on-surface-variant">All the letters, plus sticky spacebar</p></div>
+</div>
+<span class="font-mono-data text-xs px-2 py-1 bg-surface-container-high rounded">TACTILE-ISH</span>
+</div>
+<!-- Layer 3: Motherboard & CPU -->
+<div class="exploded-layer transform transition-all duration-500 translate-y-0 w-full max-w-xl bg-surface-container p-4 rounded-xl flex items-center justify-between border border-outline-variant/20 shadow-lg">
+<div class="flex items-center gap-4">
+<span class="font-mono-data text-primary">03</span>
+<div><h4 class="font-headline-sm">MOTHERBOARD &amp; CPU</h4><p class="text-body-sm text-on-surface-variant">Important green thing with silicon chips</p></div>
+</div>
+<span class="font-mono-data text-xs px-2 py-1 bg-surface-container-high rounded">1 CORE / 2 THOUGHTS</span>
+</div>
+<!-- Layer 4: Battery -->
+<div class="exploded-layer transform transition-all duration-500 translate-y-0 w-full max-w-xl bg-surface-container p-4 rounded-xl flex items-center justify-between border border-outline-variant/20 shadow-lg">
+<div class="flex items-center gap-4">
+<span class="font-mono-data text-primary">04</span>
+<div><h4 class="font-headline-sm">BATTERY CELL</h4><p class="text-body-sm text-on-surface-variant">Big rectangle that gets warm during pumps</p></div>
+</div>
+<span class="font-mono-data text-xs px-2 py-1 bg-surface-container-high rounded">UP TO 2 HOURS</span>
+</div>
+</div>
+</div>
+</section>
+<!-- LAWTOP OS SIMULATION & DESKTOP ENVIRONMENT -->
+<section class="py-24 px-4 max-w-7xl mx-auto w-full">
+<div class="text-center mb-12 space-y-2">
+<span class="text-label-sm font-mono-data text-primary uppercase">Proprietary Software</span>
+<h2 class="text-3xl md:text-4xl font-headline-lg">LAWTOP OS Simulation</h2>
+<p class="text-on-surface-variant">Fully functional-looking desktop environment. Click icons to launch apps.</p>
+</div>
+<!-- Desktop Window Container -->
+<div class="w-full bg-[#1c2128] rounded-xl border border-outline-variant/40 shadow-2xl overflow-hidden flex flex-col h-[650px] relative">
+<!-- Window Titlebar -->
+<div class="h-10 bg-[#161b22] px-4 flex items-center justify-between border-b border-outline-variant/30 select-none">
+<div class="flex items-center gap-2">
+<div class="w-3 h-3 rounded-full bg-error cursor-pointer" onclick="resetDesktop()"></div>
+<div class="w-3 h-3 rounded-full bg-secondary"></div>
+<div class="w-3 h-3 rounded-full bg-tertiary"></div>
+<span class="font-mono-data text-xs text-on-surface-variant ml-4">LAWTOP_OS_v4.2 // SECURE_SHELL</span>
+</div>
+<div class="flex items-center gap-4 font-mono-data text-xs text-on-surface-variant">
+<span id="os-clock">03:47 AM</span>
+<span class="text-tertiary flex items-center gap-1"><span class="w-2 h-2 rounded-full bg-tertiary"></span> 99% TPS</span>
+</div>
+</div>
+<!-- Desktop Body / Wallpaper -->
+<div class="flex-1 relative bg-gradient-to-br from-[#0f172a] via-[#1e293b] to-[#090d16] p-6 overflow-hidden grid grid-cols-2 sm:grid-cols-4 md:grid-cols-6 gap-6 items-start">
+<!-- Desktop Icons -->
+<div class="group flex flex-col items-center gap-2 cursor-pointer p-3 rounded-lg hover:bg-white/5 transition" onclick="openApp('charts')">
+<div class="w-12 h-12 bg-primary/20 border border-primary/40 rounded-xl flex items-center justify-center text-primary group-hover:scale-105 transition">
+<span class="material-symbols-outlined text-2xl">monitoring</span>
+</div>
+<span class="font-mono-data text-xs text-center text-on-surface">CHARTS.exe</span>
+</div>
+<div class="group flex flex-col items-center gap-2 cursor-pointer p-3 rounded-lg hover:bg-white/5 transition" onclick="openApp('calc')">
+<div class="w-12 h-12 bg-tertiary/20 border border-tertiary/40 rounded-xl flex items-center justify-center text-tertiary group-hover:scale-105 transition">
+<span class="material-symbols-outlined text-2xl">calculate</span>
+</div>
+<span class="font-mono-data text-xs text-center text-on-surface">CALC.app</span>
+</div>
+<div class="group flex flex-col items-center gap-2 cursor-pointer p-3 rounded-lg hover:bg-white/5 transition" onclick="openApp('notes')">
+<div class="w-12 h-12 bg-secondary/20 border border-secondary/40 rounded-xl flex items-center justify-center text-secondary group-hover:scale-105 transition">
+<span class="material-symbols-outlined text-2xl">edit_note</span>
+</div>
+<span class="font-mono-data text-xs text-center text-on-surface">NOTES.txt</span>
+</div>
+<div class="group flex flex-col items-center gap-2 cursor-pointer p-3 rounded-lg hover:bg-white/5 transition" onclick="openApp('work')">
+<div class="w-12 h-12 bg-error/20 border border-error/40 rounded-xl flex items-center justify-center text-error group-hover:scale-105 transition">
+<span class="material-symbols-outlined text-2xl">work</span>
+</div>
+<span class="font-mono-data text-xs text-center text-on-surface">WORK.doc</span>
+</div>
+<div class="group flex flex-col items-center gap-2 cursor-pointer p-3 rounded-lg hover:bg-white/5 transition" onclick="openApp('fruit')">
+<div class="w-12 h-12 bg-purple-500/20 border border-purple-500/40 rounded-xl flex items-center justify-center text-purple-400 group-hover:scale-105 transition">
+<span class="material-symbols-outlined text-2xl">nutrition</span>
+</div>
+<span class="font-mono-data text-xs text-center text-on-surface">FRUIT.exe</span>
+</div>
+<div class="group flex flex-col items-center gap-2 cursor-pointer p-3 rounded-lg hover:bg-white/5 transition" onclick="openApp('bin')">
+<div class="w-12 h-12 bg-slate-500/20 border border-slate-500/40 rounded-xl flex items-center justify-center text-slate-400 group-hover:scale-105 transition">
+<span class="material-symbols-outlined text-2xl">delete</span>
+</div>
+<span class="font-mono-data text-xs text-center text-on-surface">RECYCLE_BIN</span>
+</div>
+<!-- APP WINDOWS (Floating over desktop) -->
+<!-- CHARTS APP -->
+<div class="absolute top-10 left-12 w-[90%] max-w-[600px] bg-surface-container border border-outline-variant/40 rounded-xl shadow-2xl hidden flex-col overflow-hidden z-20" id="app-charts">
+<div class="bg-surface-container-high px-4 py-2.5 flex items-center justify-between border-b border-outline-variant/30">
+<span class="font-mono-data text-xs flex items-center gap-2"><span class="material-symbols-outlined text-sm text-primary">monitoring</span> CHARTS.exe</span>
+<button class="text-on-surface-variant hover:text-on-surface font-mono-data text-xs px-2 py-0.5 bg-surface rounded" onclick="closeApp('charts')">✕</button>
+</div>
+<div class="p-6 space-y-4">
+<div class="flex justify-between items-center">
+<div>
+<span class="text-mono-data text-xs text-on-surface-variant">$LAWTOP / USD</span>
+<h3 class="text-2xl font-headline-md text-tertiary">$420.69 <span class="text-xs text-tertiary font-mono-data">+69.42%</span></h3>
+</div>
+<div class="flex gap-2 font-mono-data text-xs">
+<button class="px-2 py-1 bg-primary text-on-primary rounded">1D</button>
+<button class="px-2 py-1 bg-surface-container-high rounded hover:bg-surface-bright">1W</button>
+<button class="px-2 py-1 bg-surface-container-high rounded hover:bg-surface-bright">MAX</button>
+<button class="px-3 py-1 bg-tertiary text-on-tertiary font-bold rounded animate-pulse" onclick="triggerPump()">PUMP</button>
+</div>
+</div>
+<!-- SVG Candlestick Mock -->
+<div class="w-full h-48 bg-surface-container-lowest rounded-lg p-4 flex items-end justify-between gap-2 relative overflow-hidden">
+<div class="absolute inset-0 bg-[linear-gradient(to_right,rgba(255,255,255,0.03)_1px,transparent_1px),linear-gradient(to_bottom,rgba(255,255,255,0.03)_1px,transparent_1px)] bg-[size:20px_20px]"></div>
+<!-- Candles -->
+<div class="w-4 bg-tertiary/30 h-16 rounded flex flex-col items-center justify-center relative"><div class="w-0.5 h-24 bg-tertiary absolute"></div></div>
+<div class="w-4 bg-error/30 h-10 rounded flex flex-col items-center justify-center relative"><div class="w-0.5 h-16 bg-error absolute"></div></div>
+<div class="w-4 bg-tertiary/30 h-24 rounded flex flex-col items-center justify-center relative"><div class="w-0.5 h-32 bg-tertiary absolute"></div></div>
+<div class="w-4 bg-tertiary/30 h-28 rounded flex flex-col items-center justify-center relative"><div class="w-0.5 h-36 bg-tertiary absolute"></div></div>
+<div class="w-4 bg-error/30 h-14 rounded flex flex-col items-center justify-center relative"><div class="w-0.5 h-20 bg-error absolute"></div></div>
+<div class="w-4 bg-tertiary h-40 rounded flex flex-col items-center justify-center relative shadow-[0_0_15px_rgba(0,228,117,0.5)]"><div class="w-0.5 h-48 bg-tertiary absolute"></div></div>
+</div>
+</div>
+</div>
+<!-- CALCULATOR APP -->
+<div class="absolute top-16 left-24 w-[320px] bg-surface-container border border-outline-variant/40 rounded-xl shadow-2xl hidden flex-col overflow-hidden z-20" id="app-calc">
+<div class="bg-surface-container-high px-4 py-2.5 flex items-center justify-between border-b border-outline-variant/30">
+<span class="font-mono-data text-xs flex items-center gap-2"><span class="material-symbols-outlined text-sm text-tertiary">calculate</span> CALCULATOR</span>
+<button class="text-on-surface-variant hover:text-on-surface font-mono-data text-xs px-2 py-0.5 bg-surface rounded" onclick="closeApp('calc')">✕</button>
+</div>
+<div class="p-4 space-y-3">
+<div class="w-full bg-surface-container-lowest p-3 rounded text-right font-mono-data-lg text-tertiary" id="calc-screen">42,069.00</div>
+<div class="grid grid-cols-4 gap-2 font-mono-data">
+<button class="p-3 bg-surface-container-high rounded hover:bg-surface-bright" onclick="appendCalc('7')">7</button>
+<button class="p-3 bg-surface-container-high rounded hover:bg-surface-bright" onclick="appendCalc('8')">8</button>
+<button class="p-3 bg-surface-container-high rounded hover:bg-surface-bright" onclick="appendCalc('9')">9</button>
+<button class="p-3 bg-primary/20 text-primary rounded" onclick="appendCalc('+')">+</button>
+<button class="p-3 bg-surface-container-high rounded hover:bg-surface-bright" onclick="appendCalc('4')">4</button>
+<button class="p-3 bg-surface-container-high rounded hover:bg-surface-bright" onclick="appendCalc('5')">5</button>
+<button class="p-3 bg-surface-container-high rounded hover:bg-surface-bright" onclick="appendCalc('6')">6</button>
+<button class="p-3 bg-primary/20 text-primary rounded" onclick="appendCalc('-')">-</button>
+<button class="p-3 bg-surface-container-high rounded hover:bg-surface-bright" onclick="appendCalc('1')">1</button>
+<button class="p-3 bg-surface-container-high rounded hover:bg-surface-bright" onclick="appendCalc('2')">2</button>
+<button class="p-3 bg-surface-container-high rounded hover:bg-surface-bright" onclick="appendCalc('3')">3</button>
+<button class="p-3 bg-tertiary text-on-tertiary font-bold rounded" onclick="multiply100()">100X</button>
+</div>
+</div>
+</div>
+<!-- NOTES APP -->
+<div class="absolute top-20 left-32 w-[380px] bg-surface-container border border-outline-variant/40 rounded-xl shadow-2xl hidden flex-col overflow-hidden z-20" id="app-notes">
+<div class="bg-surface-container-high px-4 py-2.5 flex items-center justify-between border-b border-outline-variant/30">
+<span class="font-mono-data text-xs flex items-center gap-2"><span class="material-symbols-outlined text-sm text-secondary">edit_note</span> NOTES.txt</span>
+<button class="text-on-surface-variant hover:text-on-surface font-mono-data text-xs px-2 py-0.5 bg-surface rounded" onclick="closeApp('notes')">✕</button>
+</div>
+<div class="p-4">
+<textarea class="w-full h-40 bg-surface-container-lowest p-3 rounded font-mono-data text-sm text-on-surface resize-none focus:outline-none">1. buy LAWTOP
+2. wait for pump
+3. panic
+4. buy again</textarea>
+</div>
+</div>
+<!-- WORK APP -->
+<div class="absolute top-12 left-40 w-[450px] bg-surface-container border border-outline-variant/40 rounded-xl shadow-2xl hidden flex-col overflow-hidden z-20" id="app-work">
+<div class="bg-surface-container-high px-4 py-2.5 flex items-center justify-between border-b border-outline-variant/30">
+<span class="font-mono-data text-xs flex items-center gap-2"><span class="material-symbols-outlined text-sm text-error">work</span> WORK.doc</span>
+<button class="text-on-surface-variant hover:text-on-surface font-mono-data text-xs px-2 py-0.5 bg-surface rounded" onclick="closeApp('work')">✕</button>
+</div>
+<div class="p-6 space-y-4 font-headline-sm text-center">
+<p class="text-xl text-error">⚠️ WARNING</p>
+<p class="text-on-surface-variant">You were supposed to be working. Why are you looking at crypto charts?</p>
+<button class="px-4 py-2 bg-error text-on-error rounded font-mono-data text-xs" onclick="closeApp('work')">CLOSE AND RETURN TO CHARTS</button>
+</div>
+</div>
+<!-- FRUIT.EXE APP -->
+<div class="absolute top-24 left-48 w-[350px] bg-surface-container border border-outline-variant/40 rounded-xl shadow-2xl hidden flex-col overflow-hidden z-20" id="app-fruit">
+<div class="bg-surface-container-high px-4 py-2.5 flex items-center justify-between border-b border-outline-variant/30">
+<span class="font-mono-data text-xs flex items-center gap-2"><span class="material-symbols-outlined text-sm text-purple-400">nutrition</span> FRUIT.exe</span>
+<button class="text-on-surface-variant hover:text-on-surface font-mono-data text-xs px-2 py-0.5 bg-surface rounded" onclick="closeApp('fruit')">✕</button>
+</div>
+<div class="p-6 text-center space-y-3 font-mono-data">
+<div class="text-4xl">🍎</div>
+<p class="text-purple-400 text-sm">AWPPLE DETECTED</p>
+<p class="text-xs text-on-surface-variant">Self-destructing in 1s... wrong project.</p>
+</div>
+</div>
+<!-- RECYCLE BIN APP -->
+<div class="absolute top-28 left-56 w-[380px] bg-surface-container border border-outline-variant/40 rounded-xl shadow-2xl hidden flex-col overflow-hidden z-20" id="app-bin">
+<div class="bg-surface-container-high px-4 py-2.5 flex items-center justify-between border-b border-outline-variant/30">
+<span class="font-mono-data text-xs flex items-center gap-2"><span class="material-symbols-outlined text-sm text-slate-400">delete</span> RECYCLE_BIN</span>
+<button class="text-on-surface-variant hover:text-on-surface font-mono-data text-xs px-2 py-0.5 bg-surface rounded" onclick="closeApp('bin')">✕</button>
+</div>
+<div class="p-4 font-mono-data text-sm space-y-2">
+<p class="text-xs text-on-surface-variant">Files inside:</p>
+<div class="p-2 bg-surface-container-lowest rounded flex justify-between items-center">
+<span>risk_management.txt</span>
+<span class="text-xs text-error">0 KB (DELETED)</span>
+</div>
+</div>
+</div>
+</div>
+<!-- Taskbar -->
+<div class="h-12 bg-[#161b22] px-4 flex items-center justify-between border-t border-outline-variant/30">
+<div class="flex items-center gap-3">
+<button class="px-3 py-1.5 bg-surface-container hover:bg-surface-bright rounded font-mono-data text-xs flex items-center gap-2" onclick="openApp('charts')">
+<span class="w-2 h-2 rounded-full bg-primary"></span> Start
+          </button>
+<span class="text-on-surface-variant text-mono-data text-xs hidden sm:inline">| LAWTOP OS Environment Active</span>
+</div>
+<div class="flex items-center gap-4 font-mono-data text-xs text-on-surface-variant">
+<span>CPU: 99%</span>
+<span>RAM: 63.8 KB</span>
+<span class="text-tertiary">🟢 ONLINE</span>
+</div>
+</div>
+</div>
+</section>
+<!-- LAWTOP TERMINAL (CLI) -->
+<section class="py-16 px-4 max-w-7xl mx-auto w-full">
+<div class="bg-[#090d16] rounded-xl border border-outline-variant/40 shadow-2xl p-6 font-mono-data text-sm">
+<div class="flex items-center justify-between pb-4 mb-4 border-b border-outline-variant/20">
+<div class="flex items-center gap-2">
+<span class="w-3 h-3 rounded-full bg-error"></span>
+<span class="w-3 h-3 rounded-full bg-secondary"></span>
+<span class="w-3 h-3 rounded-full bg-tertiary"></span>
+<span class="text-xs text-on-surface-variant ml-2">C:\WINDOWS\system32\cmd.exe — LAWTOP CLI</span>
+</div>
+<span class="text-xs text-tertiary">SECURE_SHELL</span>
+</div>
+<div class="space-y-2 mb-4 h-48 overflow-y-auto text-on-surface-variant" id="terminal-output">
+<p class="text-tertiary">LAWTOP Kernel v4.2.0 [Build 1994.69]</p>
+<p>Type 'help' to list available commands.</p>
+</div>
+<div class="flex items-center gap-2 border-t border-outline-variant/20 pt-3">
+<span class="text-primary">C:\LAWTOP&gt;</span>
+<input class="flex-1 bg-transparent text-on-surface focus:outline-none font-mono-data" id="terminal-input" onkeydown="handleTerminal(event)" placeholder="type a command..." type="text"/>
+</div>
+</div>
+</section>
+<!-- BENCHMARKS & PERFORMANCE -->
+<section class="py-24 px-4 max-w-7xl mx-auto w-full">
+<div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+<div class="space-y-6">
+<span class="text-label-sm font-mono-data text-primary uppercase">Performance Metrics</span>
+<h2 class="text-3xl md:text-4xl font-headline-lg">FAST WHERE IT MATTERS.</h2>
+<p class="text-on-surface-variant text-body-lg">Optimized exclusively for high-frequency chart watching, panic buying, and opening multiple tabs of regret.</p>
+<div class="space-y-4 pt-4">
+<div>
+<div class="flex justify-between font-mono-data text-xs mb-1">
+<span>Opening Chart</span>
+<span class="text-tertiary">100%</span>
+</div>
+<div class="w-full h-2 bg-surface-container rounded-full overflow-hidden">
+<div class="w-full h-full bg-tertiary rounded-full"></div>
+</div>
+</div>
+<div>
+<div class="flex justify-between font-mono-data text-xs mb-1">
+<span>Refreshing Chart</span>
+<span class="text-tertiary">100%</span>
+</div>
+<div class="w-full h-2 bg-surface-container rounded-full overflow-hidden">
+<div class="w-full h-full bg-tertiary rounded-full"></div>
+</div>
+</div>
+<div>
+<div class="flex justify-between font-mono-data text-xs mb-1">
+<span>Actual Work</span>
+<span class="text-error">12%</span>
+</div>
+<div class="w-full h-2 bg-surface-container rounded-full overflow-hidden">
+<div class="w-[12%] h-full bg-error rounded-full"></div>
+</div>
+</div>
+<div>
+<div class="flex justify-between font-mono-data text-xs mb-1">
+<span>Risk Management</span>
+<span class="text-error">0%</span>
+</div>
+<div class="w-full h-2 bg-surface-container rounded-full overflow-hidden">
+<div class="w-[1%] h-full bg-error rounded-full"></div>
+</div>
+</div>
+</div>
+</div>
+<div class="bg-surface-container p-8 rounded-2xl border border-outline-variant/30 flex flex-col items-center justify-center text-center space-y-6">
+<span class="text-label-sm font-mono-data text-primary uppercase">Throughput Benchmark</span>
+<div class="text-6xl md:text-7xl font-headline-xl text-tertiary font-extrabold tracking-tighter">47</div>
+<p class="font-mono-data text-lg text-on-surface">CHARTS PER SECOND (CPS)</p>
+<p class="text-body-sm text-on-surface-variant max-w-sm">Tested in extreme laboratory conditions with zero sleep and maximum caffeine intake.</p>
+</div>
+</div>
+</section>
+<!-- PROCESSOR & GPU PRESENTATION -->
+<section class="py-24 bg-surface-container-lowest px-4">
+<div class="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-12">
+<!-- L1 Processor -->
+<div class="bg-surface-container p-8 rounded-2xl border border-outline-variant/20 flex flex-col justify-between space-y-8">
+<div class="space-y-4">
+<span class="text-label-sm font-mono-data text-primary uppercase">Silicon Architecture</span>
+<h3 class="text-3xl font-headline-md">LAWTOP L1</h3>
+<p class="text-on-surface-variant">1 Core. 2 Thoughts. 420 MHz* (*when plugged in).</p>
+</div>
+<div class="bg-surface-container-lowest p-6 rounded-xl flex items-center justify-center">
+<img class="w-full h-48 object-contain" data-alt="Homemade external graphics card with uneven fans and handwritten labels AI and GPU" src="https://lh3.googleusercontent.com/aida/AEtjO1VelIDhEbkbzxR9QzXaDtEIl3BMxWjPUBrR0kfKnrDqT5UtDHByw4zbkVeHXvaIXS0jXyfnhq6XPCfk0yiwBmo3rKL_47Pov6kGZx_3CEBpb-j-3v8mWegKeisIhxlGl51tQDAh60AtmweH97AchZqzRLuDkzTyhWPdAuqbvAx_-xFK8vRirgc0SnznUPlkBfS7PTFbXQqb91vInqrpoD0zb13TgQ5XfH4iPiytnoAFZ2bRzK1HIP6vZzY"/>
+</div>
+</div>
+<!-- AI GPU -->
+<div class="bg-surface-container p-8 rounded-2xl border border-outline-variant/20 flex flex-col justify-between space-y-8">
+<div class="space-y-4">
+<span class="text-label-sm font-mono-data text-tertiary uppercase">Neural Engine</span>
+<h3 class="text-3xl font-headline-md">BUILT FOR AI</h3>
+<p class="text-on-surface-variant">Analyzing internet (tweets, charts, memes, stocks) -&gt; BUY?</p>
+</div>
+<div class="bg-surface-container-lowest p-6 rounded-xl flex items-center justify-center">
+<img class="w-full h-48 object-contain" data-alt="Split screen stock chart and crypto chart with hand drawn arrow and text same?" src="https://lh3.googleusercontent.com/aida/AEtjO1Xh8WIx802dow-y-iztMOotFkNcMsUD_XUdk7-iDAJGmvP3thzU1brLXDGi8zuw44h3nxl7-XkhRhafkCp4ILt0EvXjLoAEPWDRwNBu5wWInJVKE1xtN7jYQGnI0U5tLUg1AT8eQX3cA4XCuwDGCudirq12soumMHmHOpzF-Ab1qY5CuysQXY6PpGS04TplTgN-oumlw0GN_JyVz4Nlrx-sWpT-w1bBlwOb_Nfp80qORWMnHbiZyC-Sbzo"/>
+</div>
+</div>
+</div>
+</section>
+<!-- MARKET TERMINAL & MODE SWITCH -->
+<section class="py-24 px-4 max-w-7xl mx-auto w-full">
+<div class="flex flex-col md:flex-row justify-between items-center mb-12 gap-6">
+<div>
+<span class="text-label-sm font-mono-data text-primary uppercase">Dual-Engine Trading</span>
+<h2 class="text-3xl md:text-4xl font-headline-lg mt-1">Stocks x Crypto Terminal</h2>
+</div>
+<!-- Work / Trench Mode Toggle -->
+<div class="flex items-center gap-4 bg-surface-container p-2 rounded-xl border border-outline-variant/30">
+<span class="font-mono-data text-xs text-on-surface-variant pl-2">WORK MODE</span>
+<button class="w-14 h-8 bg-primary rounded-full relative p-1 transition-colors duration-300" id="mode-toggle-btn" onclick="toggleMode()">
+<div class="w-6 h-6 bg-on-primary rounded-full transition-transform duration-300 translate-x-6" id="mode-toggle-thumb"></div>
+</button>
+<span class="font-mono-data text-xs text-tertiary pr-2 font-bold">TRENCH MODE</span>
+</div>
+</div>
+<div class="grid grid-cols-1 lg:grid-cols-2 gap-8">
+<div class="bg-surface-container p-6 rounded-2xl border border-outline-variant/30 space-y-4">
+<div class="flex justify-between items-center font-mono-data text-sm">
+<span class="text-primary">STOCKS STREAM</span>
+<span class="text-tertiary">LIVE</span>
+</div>
+<div class="space-y-3 font-mono-data text-xs">
+<div class="p-3 bg-surface-container-lowest rounded flex justify-between items-center">
+<span>NVDA // PUMPING</span>
+<span class="text-tertiary">+$42.00 (+12.4%)</span>
+</div>
+<div class="p-3 bg-surface-container-lowest rounded flex justify-between items-center">
+<span>TSLA // SIDEWAYS</span>
+<span class="text-on-surface-variant">$0.00 (0.0%)</span>
+</div>
+</div>
+</div>
+<div class="bg-surface-container p-6 rounded-2xl border border-outline-variant/30 space-y-4">
+<div class="flex justify-between items-center font-mono-data text-sm">
+<span class="text-tertiary">CRYPTO STREAM</span>
+<span class="text-tertiary">LIVE</span>
+</div>
+<div class="space-y-3 font-mono-data text-xs">
+<div class="p-3 bg-surface-container-lowest rounded flex justify-between items-center">
+<span>$LAWTOP // MOONING</span>
+<span class="text-tertiary">+$690.42 (+420%)</span>
+</div>
+<div class="p-3 bg-surface-container-lowest rounded flex justify-between items-center">
+<span>SOL // SPEEDING</span>
+<span class="text-tertiary">+$14.20 (+8.9%)</span>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- THERMALS, BATTERY & PORTS -->
+<section class="py-24 bg-surface-container-lowest px-4">
+<div class="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-3 gap-8">
+<!-- Thermals -->
+<div class="bg-surface-container p-8 rounded-2xl border border-outline-variant/20 space-y-6">
+<span class="text-label-sm font-mono-data text-primary uppercase">Cooling System</span>
+<h3 class="text-2xl font-headline-md">Thermal Dynamics</h3>
+<div class="flex items-baseline gap-2">
+<span class="text-5xl font-headline-xl text-error font-extrabold" id="temp-display">91°C</span>
+<span class="font-mono-data text-xs text-on-surface-variant">CPU Temp</span>
+</div>
+<p class="text-body-sm text-on-surface-variant">Equipped with 2 spinny things that sound like a Boeing 747 taking off.</p>
+<button class="w-full py-2 bg-error/20 text-error rounded font-mono-data text-xs hover:bg-error/30 transition" onclick="spikeTemp()">SPIN FANS MAX</button>
+</div>
+<!-- Battery -->
+<div class="bg-surface-container p-8 rounded-2xl border border-outline-variant/20 space-y-6">
+<span class="text-label-sm font-mono-data text-tertiary uppercase">Power Delivery</span>
+<h3 class="text-2xl font-headline-md">All Day Battery</h3>
+<div class="flex items-baseline gap-2">
+<span class="text-5xl font-headline-xl text-tertiary font-extrabold">14%</span>
+<span class="font-mono-data text-xs text-on-surface-variant">Remaining</span>
+</div>
+<p class="text-body-sm text-on-surface-variant">Up to some hours, depending on how fast you close trading tabs.</p>
+<button class="w-full py-2 bg-tertiary/20 text-tertiary rounded font-mono-data text-xs hover:bg-tertiary/30 transition" onclick="plugCharger()">PLUG IN CHARGER</button>
+</div>
+<!-- Ports -->
+<div class="bg-surface-container p-8 rounded-2xl border border-outline-variant/20 space-y-6">
+<span class="text-label-sm font-mono-data text-secondary uppercase">Connectivity</span>
+<h3 class="text-2xl font-headline-md">Mystery Ports</h3>
+<div class="space-y-3 font-mono-data text-xs">
+<div class="p-3 bg-surface-container-lowest rounded flex justify-between items-center">
+<span>USB-C (Slow)</span>
+<span class="text-tertiary">CONNECTED</span>
+</div>
+<div class="p-3 bg-surface-container-lowest rounded flex justify-between items-center">
+<span>Mystery Hole</span>
+<span class="text-on-surface-variant">engineering forgot</span>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- LAWTOP PRO CINEMATIC REVEAL -->
+<section class="py-32 px-4 bg-[#090d16] text-center relative overflow-hidden">
+<div class="max-w-4xl mx-auto space-y-8 relative z-10">
+<span class="text-label-sm font-mono-data text-primary uppercase tracking-widest">Ultimate Edition</span>
+<h2 class="text-4xl md:text-6xl font-headline-xl tracking-tight">LAWTOP PRO</h2>
+<p class="text-xl text-on-surface-variant max-w-xl mx-auto">Now with extra sticker and extra fan. Absolutely no compromises on amateur craftsmanship.</p>
+<div class="pt-6">
+<a class="px-8 py-4 bg-primary text-on-primary font-mono-data rounded-lg hover:bg-primary/90 transition shadow-lg text-lg" href="#ca">SECURE YOUR LAWTOP PRO</a>
+</div>
+</div>
+</section>
+<!-- CONTRACT ADDRESS & SOCIALS -->
+<section class="py-24 px-4 max-w-4xl mx-auto w-full text-center space-y-8" id="ca">
+<span class="text-label-sm font-mono-data text-primary uppercase">Official Deployment</span>
+<h2 class="text-3xl md:text-4xl font-headline-lg">Contract Address</h2>
+<div class="bg-surface-container p-6 rounded-2xl border border-outline-variant/30 flex flex-col sm:flex-row items-center justify-between gap-4">
+<span class="font-mono-data text-sm md:text-base text-tertiary break-all" id="ca-text">Lawtop111111111111111111111111111111SOL</span>
+<button class="px-6 py-3 bg-primary text-on-primary font-mono-data rounded hover:bg-primary/90 transition whitespace-nowrap" onclick="copyCA()">COPY CA</button>
+</div>
+<div class="flex justify-center gap-6 pt-4 font-mono-data text-xs text-on-surface-variant">
+<a class="hover:text-primary transition" href="#">X / TWITTER</a>
+<span>•</span>
+<a class="hover:text-primary transition" href="#">TELEGRAM</a>
+<span>•</span>
+<a class="hover:text-primary transition" href="#">DEXSCREENER</a>
+</div>
+</section>
+<!-- FINAL SHUTDOWN SCREEN -->
+<section class="py-20 bg-black text-center border-t border-outline-variant/20">
+<div class="max-w-xl mx-auto space-y-4 px-4 font-mono-data">
+<p class="text-on-surface-variant text-sm">Shutting down LAWTOP... Update required.</p>
+<div class="text-xl text-tertiary font-bold">YOU CAN'T ESCAPE THE TRENCHES.</div>
+<div class="pt-4 text-xs text-on-surface-variant">© LAWTOP SYSTEMS. ALL RIGHTS RESERVED.</div>
+</div>
+</section>
+</div>
+<script>
+  // Rotatable laptop effect simulation on drag/hover
+  const laptopContainer = document.getElementById('hero-laptop-container');
+  const rotatableLaptop = document.getElementById('rotatable-laptop');
+  let isDragging = false;
+  let startX = 0;
+
+  if (laptopContainer && rotatableLaptop) {
+    laptopContainer.addEventListener('mousedown', (e) => {
+      isDragging = true;
+      startX = e.clientX;
+    });
+
+    window.addEventListener('mouseup', () => {
+      isDragging = false;
+    });
+
+    window.addEventListener('mousemove', (e) => {
+      if (!isDragging) return;
+      const deltaX = e.clientX - startX;
+      rotatableLaptop.style.transform = `rotate(${deltaX * 0.5}deg)`;
+    });
+  }
+
+  // Hotspot Data Switcher
+  const hotspotsData = {
+    display: { badge: 'MODULE 01', title: 'DISPLAY', desc: 'Shows things when not flickering. Resolution is technically perceived by human eyes.', spec1: '60Hz (sometimes 45)', spec2: 'Visible indoors' },
+    processor: { badge: 'MODULE 02', title: 'PROCESSOR', desc: 'Does calculations probably. Generates extreme amounts of heat.', spec1: '1 Core, 2 Thoughts', spec2: '420 MHz' },
+    gpu: { badge: 'MODULE 03', title: 'GPU', desc: 'AI READY* — *opened ChatGPT once.', spec1: 'VRAM: 4MB', spec2: 'NVIDIA RTX-ish' },
+    battery: { badge: 'MODULE 04', title: 'BATTERY', desc: 'Up to some hours. Big rectangle that gets warm during pumps.', spec1: 'Capacity: Yes', spec2: 'Drain: Fast' },
+    keyboard: { badge: 'MODULE 05', title: 'KEYBOARD', desc: 'All the letters are present, though some require double pressing.', spec1: 'Layout: QWERTY-ish', spec2: 'Tactile: Sticky' },
+    camera: { badge: 'MODULE 06', title: 'CAMERA', desc: '720ish P resolution capturing your existential dread.', spec1: 'Sensor: Potato', spec2: 'FPS: 12' }
+  };
+
+  function setHotspot(key) {
+    const data = hotspotsData[key];
+    if (!data) return;
+    document.getElementById('hs-badge').innerText = data.badge;
+    document.getElementById('hs-title').innerText = data.title;
+    document.getElementById('hs-desc').innerText = data.desc;
+    document.getElementById('hs-spec1').innerText = data.spec1;
+    document.getElementById('hs-spec2').innerText = data.spec2;
+  }
+
+  // Exploded Teardown Toggle
+  let isExploded = false;
+  function toggleExplode() {
+    isExploded = !isExploded;
+    const layers = document.querySelectorAll('.exploded-layer');
+    const btn = document.getElementById('explode-btn');
+    
+    layers.forEach((layer, index) => {
+      if (isExploded) {
+        const offset = (index - 1.5) * 70;
+        layer.style.transform = `translateY(${offset}px) scale(1.02)`;
+      } else {
+        layer.style.transform = `translateY(0px) scale(1)`;
+      }
+    });
+
+    btn.innerText = isExploded ? 'ASSEMBLE HARDWARE' : 'TRIGGER EXPLOSION';
+  }
+
+  // OS Window Management
+  function openApp(appName) {
+    const app = document.getElementById(`app-${appName}`);
+    if (app) {
+      app.classList.remove('hidden');
+      app.classList.add('flex');
+    }
+  }
+
+  function closeApp(appName) {
+    const app = document.getElementById(`app-${appName}`);
+    if (app) {
+      app.classList.remove('flex');
+      app.classList.add('hidden');
+    }
+  }
+
+  function resetDesktop() {
+    ['charts', 'calc', 'notes', 'work', 'fruit', 'bin'].forEach(app => closeApp(app));
+  }
+
+  function bootOsSequence() {
+    alert('LAWTOP OS Initializing... Booting into high-frequency trading mode.');
+    openApp('charts');
+  }
+
+  function triggerPump() {
+    alert('🚀 PUMP SIGNAL SENT TO MAINFRAME! Price increased by 420%.');
+  }
+
+  // Calculator logic
+  let calcValue = '42,069.00';
+  function appendCalc(val) {
+    const screen = document.getElementById('calc-screen');
+    if (calcValue === '42,069.00') calcValue = '';
+    calcValue += val;
+    screen.innerText = calcValue;
+  }
+
+  function multiply100() {
+    const screen = document.getElementById('calc-screen');
+    calcValue = '4,206,900.00 (REASONABLE TARGET)';
+    screen.innerText = calcValue;
+  }
+
+  // Terminal CLI
+  function handleTerminal(e) {
+    if (e.key === 'Enter') {
+      const input = document.getElementById('terminal-input');
+      const output = document.getElementById('terminal-output');
+      const cmd = input.value.trim().toLowerCase();
+      
+      const pReq = document.createElement('p');
+      pReq.innerHTML = `<span class="text-primary">C:\\LAWTOP></span> ${input.value}`;
+      output.appendChild(pReq);
+
+      const pRes = document.createElement('p');
+      if (cmd === 'help') {
+        pRes.innerText = 'Available commands: chart, stocks, crypto, work, profit, clear, exit';
+      } else if (cmd === 'chart' || cmd === 'stocks' || cmd === 'crypto') {
+        pRes.innerText = 'SUCCESS: Fetched green candles. Price is pumping.';
+        pRes.className = 'text-tertiary';
+      } else if (cmd === 'work') {
+        pRes.innerText = 'ERROR 404: Work ethic not found in this directory.';
+        pRes.className = 'text-error';
+      } else if (cmd === 'profit') {
+        pRes.innerText = 'CALCULATING... Profit is infinite, risk is zero.';
+        pRes.className = 'text-tertiary';
+      } else if (cmd === 'clear') {
+        output.innerHTML = '';
+        input.value = '';
+        return;
+      } else if (cmd === 'exit') {
+        pRes.innerText = 'Cannot exit. You are locked in the trenches.';
+      } else {
+        pRes.innerText = `'${cmd}' is not recognized as an internal or external command. Type 'help'.`;
+      }
+      output.appendChild(pRes);
+      input.value = '';
+      output.scrollTop = output.scrollHeight;
+    }
+  }
+
+  // Work / Trench Mode Toggle
+  let isTrenchMode = true;
+  function toggleMode() {
+    isTrenchMode = !isTrenchMode;
+    const thumb = document.getElementById('mode-toggle-thumb');
+    if (isTrenchMode) {
+      thumb.style.transform = 'translateX(24px)';
+    } else {
+      thumb.style.transform = 'translateX(0px)';
+    }
+  }
+
+  // Thermals spike
+  function spikeTemp() {
+    const tempDisp = document.getElementById('temp-display');
+    tempDisp.innerText = '99°C';
+    alert('FANS AT 100% CAPACITY. Boeing 747 takeoff sound playing.');
+    setTimeout(() => { tempDisp.innerText = '91°C'; }, 3000);
+  }
+
+  function plugCharger() {
+    alert('CHARGER CONNECTED. CPU frequency boosted from 420 MHz to 421 MHz.');
+  }
+
+  // Copy CA
+  function copyCA() {
+    const caText = document.getElementById('ca-text').innerText;
+    navigator.clipboard.writeText(caText);
+    alert('COPIED TO LAWTOP: ' + caText);
+  }
+</script></main><footer class="w-full bg-surface-container-low py-margin-page"><div class="max-w-[1440px] mx-auto px-margin-page flex flex-col md:flex-row justify-between items-center text-on-surface-variant text-body-sm"><p>© LAWTOP SYSTEMS. ALL RIGHTS RESERVED.</p><div class="flex gap-gutter-md mt-4 md:mt-0"><span class="font-mono-data">SEC_TERM_v4.2</span></div></div></footer></body></html>
